@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  client:
+    image: amuturia/yolomy-client:v1.1.1
+    container_name: client
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+    networks:
+      - shopers
+
+  backend:
+    image: amuturia/yolomy-backend:v1.1.0
+    container_name: backend
+    #restart: always 
+    environment:
+      - DB_URL=mongodb://mongo/yolomy
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo
+    networks:
+      - shopers
+
+  mongo:
+    image: mongo:4.0-xenial
+    container_name: mongo_db
+    ports:
+      - 27017:27017
+    volumes:
+      - yolomy:/data/db
+    networks:
+      - shopers
+ 
+volumes:
+  yolomy:
+    
+networks:
+  shopers:
+    driver: bridge
