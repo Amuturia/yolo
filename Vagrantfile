@@ -63,11 +63,21 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+  config.vm.provision "shell", inline: <<-SHELL
+      apt-get update
+     apt-get install -y apache2
+   SHELL
 
+  #lets install the docker engine here than in the playbook
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    apt-get update
+    apt-get install -y docker-ce
+  SHELL
+  
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yaml" 
     ansible.verbose = "vv"
