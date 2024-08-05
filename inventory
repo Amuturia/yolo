@@ -1,0 +1,2 @@
+[yolomy]
+localhost ansible_connection=local
