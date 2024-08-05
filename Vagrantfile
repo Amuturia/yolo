@@ -77,6 +77,12 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get install -y docker-ce
   SHELL
+
+    # Provision to install Docker Compose
+  config.vm.provision "shell", inline: <<-SHELL
+    curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+  SHELL
   
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yaml" 
