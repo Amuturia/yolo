@@ -1,0 +1,10 @@
+---
+- name: Clone e-commerce application from GitHub
+  hosts: localhost  # or specify your target hosts
+  tasks:
+    - name: Clone the e-commerce application repository
+      git:
+        repo: 'https://github.com/Amuturia/yolo.git' 
+        dest: /development  # Replace with your desired destination path
+        version: master  # Replace with the branch name if necessary
+        update: yes

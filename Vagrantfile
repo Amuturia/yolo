@@ -67,4 +67,20 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
+
+  # Providing for the playbook.yaml
+    config.vm.provision:Ansible do [Ansible]
+        Ansible.playbook = 'playbook.yaml'
+        Ansible.verbose = "vv"
+    end
+
+    # Install Docker
+    config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y docker.io
+    systemctl start docker
+    systemctl enable docker
+  SHELL
+  end
+
 end
