@@ -1,2 +1,22 @@
 ---
 # tasks file for mongo
+- name: Import MongoDB public GPG key
+  apt_key:
+    url: https://www.mongodb.org/static/pgp/server-4.4.asc
+    state: present
+
+- name: Create MongoDB source list file
+  apt_repository:
+    repo: "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/multiverse amd64 packages"
+    state: present
+    
+- name: Install MongoDB
+  apt:
+    name: mongodb-org
+    state: latest
+
+- name: Start MongoDB service
+  service:
+    name: mongod
+    state: started
+    enabled: true

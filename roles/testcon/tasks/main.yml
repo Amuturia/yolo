@@ -1,2 +1,4 @@
 ---
 # tasks file for testcon
+- name: Test connectivity using ping
+  ping:
