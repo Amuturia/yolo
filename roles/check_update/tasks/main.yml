@@ -1,5 +1,5 @@
 ---
-# tasks file for check_update
+# tasks file for check_update. I want it separate from the other installations since I want it to constantly check for updates whenever vagrant up
 - name: Update apt package index
   apt:
     update_cache: yes
