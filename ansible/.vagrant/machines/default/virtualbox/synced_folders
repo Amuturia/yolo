@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/tony/development/Testing/assigment/yolo","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/tony/development/Testing/assigment/yolo/ansible","disabled":false,"__vagrantfile":true}}}
