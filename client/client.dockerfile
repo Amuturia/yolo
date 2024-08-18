@@ -19,8 +19,8 @@ WORKDIR /app
 #Copy the optimized version that was built
 COPY --from=build ./app ./
 
-# RUN npm install -g serve
+RUN npm install -g serve
 
 EXPOSE 3000
-CMD [ "npm", "start" ]
-# CMD [ "serve", "-s", "build", "-l", "3000" ]
+# CMD [ "npm", "start" ]
+CMD [ "serve", "-s", "build", "-l", "3000" ]
