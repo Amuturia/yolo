@@ -37,9 +37,8 @@ services:
       - 27017:27017 
     volumes:
       - yolomy:/data/db
-    # environment:
-    #   MONGO_INITDB_ROOT_USERNAME: root
-    #   MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - shoppers
 
 #Declare the volume that the database will be using to persiste the data
 volumes:
