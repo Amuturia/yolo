@@ -1,5 +1,17 @@
 services:
-  
+
+  #Build the backend container for my website
+  backend: 
+    container_name: backend
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: backend.dockerfile
+    ports:
+      - 5000:5000
+    environment:
+      - DB_URL=mongodb://mongo/yolomy
+
 
   #The database that will be assosiated with the website
   mongo:
@@ -10,9 +22,9 @@ services:
       - 27017:27017 
     volumes:
       - yolomy:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: example
 
 #Declare the volume that the database will be using to persiste the data
 volumes:
