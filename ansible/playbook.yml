@@ -1,47 +1,9 @@
-- hosts: all  
+- 
+  hosts: all  
   become: true
-  # roles:
+  roles:
 
-  #   - testcon
-  #   - apt_update
-  #   - client
- 
-  tasks:
-  
-    - name: Ensure the target directory exists
-      file:
-        path: /home/yolomy
-        state: directory
-        owner: "{{ ansible_user }}"
-        group: "{{ ansible_user }}"
-        mode: '0755'
-
-    - name: Clone the GitHub repository
-      git:
-        repo: 'https://github.com/Amuturia/yolo.git'
-        dest: /home/yolomy
-        version: master  # You can specify the branch; use 'main' or 'master' or any specific tag
-        force: yes  # Forces a new clone if the directory already exists
-
-    - name: Install nvm
-      become_user: root
-      shell: |
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-
-    
-    - name: Source nvm script
-      shell: source ~/.nvm/nvm.sh
-      args:
-        executable: /bin/bash
-
-    - name: Install Node.js using nvm
-      shell: nvm install <node_version>
-      args:
-        executable: /bin/bash
-    
-    - name: Install npm packages
-      community.general.npm:
-        name:
-          - package1
-          - package2
-        global: yes
+    - docker
+    - mongo
+    - backend
+    - client
