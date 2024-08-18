@@ -1,0 +1,12 @@
+---
+- name: Run the backend container
+  docker_container:
+    name: backend
+    image: amuturia/backend:v0.0.1
+    ports:
+      - "5000:5000"
+    env:
+      DB_URL: mongodb://mongo/yolomy
+    restart_policy: always
+    networks:
+      - name: bridge

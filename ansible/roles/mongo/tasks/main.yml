@@ -1,0 +1,16 @@
+---
+- name: Create Docker volume
+  docker_volume:
+    name: yolomy
+
+- name: Run the MongoDB container
+  docker_container:
+    name: db
+    image: mongo:4.0-xenial
+    ports:
+      - "27017:27017"
+    volumes:
+      - yolomy:/data/db
+    restart_policy: always
+    networks:
+      - name: bridge
