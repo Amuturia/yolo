@@ -11,6 +11,8 @@ services:
     restart: always
     depends_on:
       - backend
+    networks:
+      - shoppers
 
   #Build the backend container for my website
   backend: 
@@ -23,8 +25,9 @@ services:
       - 5000:5000
     environment:
       - DB_URL=mongodb://mongo/yolomy
-
-
+    networks:
+      - shoppers
+    
   #The database that will be assosiated with the website
   mongo:
     container_name: db
@@ -42,3 +45,7 @@ services:
 volumes:
   yolomy: 
     driver: local
+#create bridge network for the container to communicate
+networks:
+  shoppers:
+    driver: bridge
