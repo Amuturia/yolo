@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "geerlingguy/ubuntu2004"
+  config.vm.box = "base"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
   # config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
-  
+  #
   #   # Customize the amount of memory on the VM:
   #   vb.memory = "1024"
   # end
@@ -64,31 +64,7 @@ Vagrant.configure("2") do |config|
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
   # config.vm.provision "shell", inline: <<-SHELL
-  #     apt-get update
-  #    apt-get install -y apache2
-  #  SHELL
-
-  #lets install the docker engine here than in the playbook
-  # config.vm.provision "shell", inline: <<-SHELL
   #   apt-get update
-  #   apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-  #   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-  #   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  #   apt-get update
-  #   apt-get install -y docker-ce
+  #   apt-get install -y apache2
   # SHELL
-
-  #   # Provision to install Docker Compose
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  #   chmod +x /usr/local/bin/docker-compose
-  # SHELL
-  
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "playbook.yml" 
-    ansible.verbose = "v"
-  end
-
-  # configure the network settings when needed
-  config.vm.network "private_network", type: "dhcp"
 end
