@@ -1,9 +1,21 @@
 services:
+  #Build the client container for the website
+  client: 
+    container_name: client
+    image: amuturia/client:v0.0.1
+    build:
+      context: ./client
+      dockerfile: client.dockerfile
+    ports:
+      - 3000:3000
+    restart: always
+    depends_on:
+      - backend
 
   #Build the backend container for my website
   backend: 
     container_name: backend
-    image: backend
+    image: amuturia/backend:v0.0.1
     build:
       context: ./backend
       dockerfile: backend.dockerfile
