@@ -138,7 +138,7 @@ Save these configurations in their respective .yaml files, and then you can appl
     
 2.  **Access the Application**:  
     Open a web browser and navigate to the external IP (or `<GKE_Cluster_IP>:<NodePort>` for `NodePort`) to see the Yolomy eCommerce website.
-    ![img](/images/Kubernetes Engine.jpeg)
+    ![img](./images/Kubernetes-Engine.jpeg)
 
 ## Cleaning Up
 
