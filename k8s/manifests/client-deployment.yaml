@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: amuturia/client:v0.0.1
+          image: docker.io/amuturia/client:v0.0.1
           resources:
             limits:
               memory: "128Mi"
