@@ -101,6 +101,8 @@ Sample service.yaml
           nodePort: 30001 # Choose a port in the range 30000-32767
 
 Save these configurations in their respective .yaml files, and then you can apply them using kubectl as mentioned in the previous instructions.
+The dockerhub images in use are the following:
+![img](./images/Dockerhub-Images.jpeg)
 
 3.  **Check the Deployment**:
     
