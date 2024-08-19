@@ -20,4 +20,7 @@ spec:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 5000
+          - containerPort: 5000
+        env:
+          - name: DB_URL
+            value: mongodb://mongo:27017/yolomy
