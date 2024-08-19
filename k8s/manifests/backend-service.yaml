@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: backend
 spec:
-  type: ClusterIP
   selector:
     app: backend
+  type: LoadBalancer
   ports:
-  - port: 5000
+  - protocol: TCP
+    port: 5000
     targetPort: 5000
